@@ -1,0 +1,37 @@
+<ion-header *ngIf="data">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{ data.title }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="data">
+  <ion-card class="welcome-card">
+    <ion-img [src]="data.urlToImage"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>{{ data.author }} <br />
+        {{ data.publishedAt | date }}</ion-card-subtitle>
+      <ion-card-title>{{ data.title }} </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ data.content }}</p>
+    </ion-card-content>
+    <ion-list lines="none">
+      <ion-list-header>
+        <ion-label>{{ data.source.name }}</ion-label>
+      </ion-list-header>
+      <!-- <ion-item *ngFor="let s of data.source">
+        <ion-icon slot="start" color="medium" name="book"></ion-icon>
+        <ion-label>{{s}}</ion-label>
+      </ion-item> -->
+      <ion-item [href]="data.url">
+        <ion-icon slot="start" color="medium" name="link"></ion-icon>
+        <ion-label>View Article</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>
